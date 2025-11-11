@@ -1,0 +1,24 @@
+{
+    "cmake.sourceDirectory": "/wsl.localhost/Ubuntu-24.04/home/maxarthay/cpp/lab-5-intro-to-data-structures-a",
+    "cmake.ignoreCMakeListsMissing": true,
+    "files.associations": {
+        "vector": "cpp",
+        "new": "cpp",
+        "atomic": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "iterator": "cpp",
+        "memory_resource": "cpp",
+        "optional": "cpp",
+        "string_view": "cpp",
+        "functional": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
+}
