@@ -100,7 +100,7 @@ public:
 
             T* new_array_= new T[capacity_];
             for(int i = 0; i < curr_size_; i++) {
-                new_array_ = array_[i];
+                new_array_[i] = array_[i];
             }
 
             delete[] array_;

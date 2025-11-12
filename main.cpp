@@ -19,10 +19,11 @@
 */
 
 int main() {
-    LLS<int> lldq;
-    lldq.push(1);
-    lldq.pop();
-    lldq.peek();
+    LinkedList<int> ll;
+    ll.addHead(1);
+    ll.addHead(2);
+    ll.addHead(3);
+    ll.addTail(3);
 
     return 0;
 }

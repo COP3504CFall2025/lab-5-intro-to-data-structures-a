@@ -16,20 +16,26 @@ class LinkedList {
 public:
 	// Behaviors
 	void printForward() const {
+		if (count == 0) {
+            throw std::runtime_error("Empty container");
+        }
 		Node<T>* curr = head;
-		while (curr->next != nullptr) {
+		while (curr != nullptr) {
 			std::cout << curr->data << " ";
+			curr = curr->next;
 		}
 
-		std::cout << tail->data;
 	}
 	void printReverse() const {
+		if (count == 0) {
+            throw std::runtime_error("Empty container");
+        }
 		Node<T>* curr = tail;
-		while (curr->prev != nullptr) {
+		while (curr != nullptr) {
 			std::cout << curr->data << " ";
+			curr = curr->prev;
 		}
 
-		std::cout << head->data;
 	}
 
 	// Accessors
@@ -98,7 +104,6 @@ public:
 			head->prev = nullptr;
 		}
 		
-
 		delete deleteMe;
 		count--;
 
