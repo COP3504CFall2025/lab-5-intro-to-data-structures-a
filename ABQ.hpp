@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include "Interfaces.hpp"
+#include <iostream>
 
 // Technically bad, but size_t isn't likely to conflict with any client code.
 using std::size_t;
@@ -20,12 +21,12 @@ public:
     ABQ() {
         capacity_ = 1;
         curr_size_ = 0;
-        data_ = new T[capacity_];
+        array_ = new T[capacity_];
     }
     explicit ABQ(const size_t capacity) {
         capacity_ = capacity;
         curr_size_ = 0;
-        data_ = new T[capacity_];
+        array_ = new T[capacity_];
     }
     ABQ(const ABQ& other) {
         this->capacity_ = other.capacity_;
@@ -118,9 +119,9 @@ public:
 
     // Deletion
     T dequeue() override {
-        T element = array[0];
+        T element = array_[0];
         for (size_t i = 1; i < curr_size_; i++) {
-            array_[i-1] = array[i];
+            array_[i-1] = array_[i];
         }
         curr_size_--;
         return element;

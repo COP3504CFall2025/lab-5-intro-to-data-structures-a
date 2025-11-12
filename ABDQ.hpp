@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include "Interfaces.hpp"
 #include <utility>
+#include <iostream>
 
 template <typename T>
 class ABDQ : public DequeInterface<T> {
@@ -20,14 +21,14 @@ public:
     // Big 5
     ABDQ() {
         capacity_ = 4;
-        size_ = 0;
+        curr_size_ = 0;
         front_ = 0;
         back_ = 0;
         data_ = new T[capacity_];
     }
     explicit ABDQ(std::size_t capacity) {
         capacity_ = capacity;
-        size_ = 0;
+        curr_size_ = 0;
         front_ = 0;
         back_ = 0;
         data_ = new T[capacity_];
@@ -35,23 +36,23 @@ public:
     ABDQ(const ABDQ& other) {
         this->capacity_ = other.capacity_;
         this->curr_size_ = other.curr_size_;
-        this->array_ = new T[capacity_];
+        this->data_ = new T[capacity_];
         front_ = other.front_;
         back_ = other.back_;
         
         for (size_t i = 0; i < other.curr_size_; i++) {
-            this->array_[i] = other.array_[i];
+            this->data_[i] = other.data_[i];
         }
     }
     ABDQ(ABDQ&& other) noexcept {
         this->capacity_ = other.capacity_;
         this->curr_size_ = other.curr_size_;
-        this->array_ = other.array_;
+        this->data_ = other.data_;
         front_ = other.front_;
         back_ = other.back_;
 
-        delete[] other.array_;
-        other.array_ = nullptr;
+        delete[] other.data_;
+        other.data_ = nullptr;
         other.curr_size_ = 0;
         other.capacity_ = 0;
         other.front_ = 0;
@@ -61,11 +62,11 @@ public:
         if (this == &other) return *this;
 
         T* newArray = new T[other.capacity_];
-        delete[] this->array_;
-        this->array_ = other.array_;
+        delete[] this->data_;
+        this->data_ = other.data_;
         
         for (size_t i = 0; i < other.curr_size_; i++) {
-            this->array_[i] = other.array_[i];
+            this->data_[i] = other.data_[i];
         }
 
         this->capacity_ = other.capacity_;
@@ -82,10 +83,10 @@ public:
         curr_size_ = other.curr_size_;
         front_ = other.front_;
         back_ = other.back_;
-        delete[] array_;
-        array_ = other.array_;
+        delete[] data_;
+        data_ = other.data_;
 
-        other.array_ = nullptr;
+        other.data_ = nullptr;
         other.capacity_ = 0;
         other.curr_size_ = 0;
         other.front_ = 0;
@@ -93,9 +94,9 @@ public:
 
         return *this;
     }
-    ~ABDQ() override {
-        delete[] array_;
-        array_ = nullptr;
+    ~ABDQ() {
+        delete[] data_;
+        data_ = nullptr;
         capacity_ = 0;
         curr_size_ = 0;
         front_ = 0;
@@ -116,7 +117,7 @@ public:
             data_ = newData;
         }
 
-        for (size_t i = curr_size_; i >= 0; i--) {
+        for (size_t i = curr_size_; i > 0; i--) {
             data_[i+1] = data_[i];
         }
 
@@ -142,25 +143,37 @@ public:
 
     // Deletion
     T popFront() override {
-        T element = array_[0];
+        if (curr_size_ == 0) {
+            throw std::out_of_range("Empty container");
+        }
+        T element = data_[0];
         for (size_t i = 1; i < curr_size_; i++) {
-            array_[i-1] = array_[i];
+            data_[i-1] = data_[i];
         }
         curr_size_--;
         return element;
     }
     T popBack() override {
-        T element = array_[curr_size_ - 1];
+        if (curr_size_ == 0) {
+            throw std::out_of_range("Empty container");
+        }
+        T element = data_[curr_size_ - 1];
         curr_size_--;
         return element;
     }
 
     // Access
     const T& front() const override {
-        return array_[0];
+        if (curr_size_ == 0) {
+            throw std::out_of_range("Empty container");
+        }
+        return data_[0];
     }
     const T& back() const override {
-        return array_[curr_size_ - 1];
+        if (curr_size_ == 0) {
+            throw std::out_of_range("Empty container");
+        }
+        return data_[curr_size_ - 1];
     }
 
     // Getters
@@ -179,14 +192,14 @@ public:
     }
 
     void PrintForward() const {
-        for (T element : array_) {
+        for (T element : data_) {
             std::cout << element << " ";
         }
     }
 
     void PrintReverse() const {
         for (size_t i = curr_size_; i >= 0; i--) {
-            std::cout << array_[i] << " ";
+            std::cout << data_[i] << " ";
         }
     }
 

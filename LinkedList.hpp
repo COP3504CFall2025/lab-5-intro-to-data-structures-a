@@ -2,6 +2,15 @@
 #include <iostream>
 using namespace std;
 
+
+
+template <typename T>
+struct Node {
+    T data;
+    Node* prev;
+    Node* next;
+};
+
 template <typename T>
 class LinkedList {
 public:
@@ -173,11 +182,4 @@ private:
 	Node* tail;
 	unsigned int count;
 
-};
-
-template <typename T>
-struct Node {
-    T data;
-    Node* prev;
-    Node* next;
 };

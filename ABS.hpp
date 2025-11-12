@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include "Interfaces.hpp"
+#include <iostream>
 
 // Technically bad, but size_t isn't likely to conflict with any client code.
 using std::size_t;
@@ -37,8 +38,8 @@ public:
         delete[] this->array_;
         this->array_ = rhs.array_;
         
-        for (size_t i = 0; i < other.curr_size_; i++) {
-            this->array_[i] = other.array_[i];
+        for (size_t i = 0; i < rhs.curr_size_; i++) {
+            this->array_[i] = rhs.array_[i];
         }
 
         this->capacity_ = rhs.capacity_;
