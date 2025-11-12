@@ -21,7 +21,6 @@
 int main() {
     LLQ<int> llq;
     llq.enqueue(1);
-    llq.dequeue();
     std::cout << llq.peek();
     std::cout << llq.getSize();
 

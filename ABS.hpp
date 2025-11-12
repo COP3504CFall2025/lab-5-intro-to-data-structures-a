@@ -122,7 +122,6 @@ public:
         }
         T element = array_[curr_size_ - 1];
         curr_size_--;
-        capacity_--;
         return element;
     }
 

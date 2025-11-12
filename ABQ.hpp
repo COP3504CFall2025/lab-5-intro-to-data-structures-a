@@ -129,7 +129,6 @@ public:
             array_[i-1] = array_[i];
         }
         curr_size_--;
-        capacity_--;
         return element;
     }
 

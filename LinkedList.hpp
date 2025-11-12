@@ -157,6 +157,12 @@ public:
 
 		clear();
 
+		if (rhs.head == nullptr) {
+			head = nullptr;
+			tail = nullptr;
+			count = 0;
+			return *this;
+		}
 		head = new Node<T>(rhs.head->data);
 		Node<T>* curr = head;
 		Node<T>* currOther = rhs.head->next;
@@ -178,6 +184,12 @@ public:
 	// Construction/Destruction
 	LinkedList() : head(nullptr), tail(nullptr), count(0) {};
 	LinkedList(const LinkedList<T>& list) {
+		if (list.head == nullptr) {
+			head = nullptr;
+			tail = nullptr;
+			count = 0;
+			return;
+		}
 		head = new Node<T>(list.head->data);
 		Node<T>* curr = head;
 		Node<T>* currOther = list.head->next;
