@@ -19,13 +19,12 @@
 */
 
 int main() {
-    LinkedList<int> ll;
-    ll.addHead(1);
-    ll.addHead(2);
-    ll.removeHead();
-    ll.removeHead();
-    ll.addHead(1);
-    ll.printForward();
+    LLQ<int> llq;
+    llq.enqueue(1);
+    llq.dequeue();
+    std::cout << llq.peek();
+    std::cout << llq.getSize();
+
 
     return 0;
 }

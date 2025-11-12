@@ -13,7 +13,7 @@ private:
 
 public:
     // Constructor
-    LLDQ() : LinkedList() {};
+    LLDQ() : list() {};
 
     // Core Insertion Operations
     void pushFront(const T& item) override {
