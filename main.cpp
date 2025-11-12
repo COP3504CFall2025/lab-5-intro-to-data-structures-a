@@ -19,7 +19,10 @@
 */
 
 int main() {
-    LLDQ<int> llq;
+    LLS<int> lldq;
+    lldq.push(1);
+    lldq.pop();
+    lldq.peek();
 
     return 0;
 }

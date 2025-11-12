@@ -6,8 +6,6 @@
 #include "LinkedList.hpp"
 #include <utility>
 
-
-
 template <typename T>
 class LLDQ : public DequeInterface<T> {
 private:
@@ -15,7 +13,7 @@ private:
 
 public:
     // Constructor
-    LLDQ();
+    LLDQ() {};
 
     // Core Insertion Operations
     void pushFront(const T& item) override {
@@ -27,11 +25,17 @@ public:
 
     // Core Removal Operations
     T popFront() override {
+        if (getSize() == 0) {
+            throw std::runtime_error("Empty container");
+        }
         T val = (list.getHead())->data;
         list.removeHead();
         return val;
     }
     T popBack() override {
+        if (getSize() == 0) {
+            throw std::runtime_error("Empty container");
+        }
         T val = (list.getTail())->data;
         list.removeTail();
         return val;
@@ -39,9 +43,15 @@ public:
 
     // Element Accessors
     const T& front() const override {
+        if (getSize() == 0) {
+            throw std::runtime_error("Empty container");
+        }
         return (list.getHead())->data;
     }
     const T& back() const override {
+        if (getSize() == 0) {
+            throw std::runtime_error("Empty container");
+        }
         return (list.getTail())->data;
     }
 

@@ -11,7 +11,7 @@ private:
     LinkedList<T> list;
 public:
     // Constructor
-    LLQ() = default;
+    LLQ() {};
 
     // Insertion
     void enqueue(const T& item) override {
@@ -20,6 +20,9 @@ public:
 
     // Deletion
     T dequeue() override {
+        if (getSize() == 0) {
+            throw std::runtime_error("Empty container");
+        }
         T val = (list.getHead())->data;
         list.removeHead();
         return val;
@@ -27,6 +30,9 @@ public:
 
     // Access
     T peek() const override {
+        if (getSize() == 0) {
+            throw std::runtime_error("Empty container");
+        }
         return (list.getHead())->data;
     }
 

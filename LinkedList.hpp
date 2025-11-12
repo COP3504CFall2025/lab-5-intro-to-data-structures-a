@@ -88,8 +88,16 @@ public:
 		if (count == 0) return false;
 
 		Node<T>* deleteMe = head;
-		head = head->next;
-		head->prev = nullptr;
+
+		if (head == tail) {
+			head = nullptr;
+			tail = nullptr;
+		}
+		else {
+			head = head->next;
+			head->prev = nullptr;
+		}
+		
 
 		delete deleteMe;
 		count--;
@@ -100,8 +108,15 @@ public:
 		if (count == 0) return false;
 
 		Node<T>* deleteMe = tail;
-		tail = tail->prev;
-		tail->next = nullptr;
+
+		if (head == tail) {
+			head = nullptr;
+			tail = nullptr;
+		}
+		else {
+			tail = tail->prev;
+			tail->next = nullptr;
+		}
 
 		delete deleteMe;
 		count--;
