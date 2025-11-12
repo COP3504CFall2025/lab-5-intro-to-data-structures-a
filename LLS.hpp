@@ -11,11 +11,7 @@ private:
     LinkedList<T> list;
 public:
     // Constructor
-    LLS() {
-        list.head = nullptr;
-        list.tail = nullptr;
-        list.count = 0;
-    }
+    LLS();
 
     // Insertion
     void push(const T& item) override {

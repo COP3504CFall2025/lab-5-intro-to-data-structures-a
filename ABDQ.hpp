@@ -51,7 +51,6 @@ public:
         front_ = other.front_;
         back_ = other.back_;
 
-        delete[] other.data_;
         other.data_ = nullptr;
         other.curr_size_ = 0;
         other.capacity_ = 0;
@@ -63,7 +62,7 @@ public:
 
         T* newArray = new T[other.capacity_];
         delete[] this->data_;
-        this->data_ = other.data_;
+        this->data_ = newArray;
         
         for (size_t i = 0; i < other.curr_size_; i++) {
             this->data_[i] = other.data_[i];

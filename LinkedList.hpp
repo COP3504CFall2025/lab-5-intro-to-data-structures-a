@@ -2,8 +2,6 @@
 #include <iostream>
 using namespace std;
 
-
-
 template <typename T>
 struct Node {
     T data;
@@ -54,20 +52,34 @@ public:
 	// Insertion
 	void addHead(const T& data) {
 		Node<T>* newHead = new Node<T>(data);
-		newHead->next = head;
-		newHead->prev = nullptr;
 
-		head->prev = newHead;
-		head = newHead;
+		if (head == nullptr) {
+			head = newHead;
+			tail = newHead;
+		}
+		else {
+			newHead->next = head;
+			newHead->prev = nullptr;
+
+			head->prev = newHead;
+			head = newHead;
+		}
 		count++;
 	}
 	void addTail(const T& data) {
 		Node<T>* newTail = new Node<T>(data);
-		newTail->next = nullptr;
-		newTail->prev = tail;
 
-		tail->next = newTail;
-		tail = newTail;
+		if (tail == nullptr) {
+			head = newTail;
+			tail = newTail;
+		}
+		else {
+			newTail->next = nullptr;
+			newTail->prev = tail;
+
+			tail->next = newTail;
+			tail = newTail;
+		}
 		count++;
 	}
 

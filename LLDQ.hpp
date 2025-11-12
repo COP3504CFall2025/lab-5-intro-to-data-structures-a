@@ -15,11 +15,7 @@ private:
 
 public:
     // Constructor
-    LLDQ() {
-        list.head = nullptr;
-        list.tail = nullptr;
-        list.count = 0;
-    }
+    LLDQ();
 
     // Core Insertion Operations
     void pushFront(const T& item) override {

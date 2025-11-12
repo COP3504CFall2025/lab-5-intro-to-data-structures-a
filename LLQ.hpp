@@ -11,11 +11,7 @@ private:
     LinkedList<T> list;
 public:
     // Constructor
-    LLQ() {
-        list.head = nullptr;
-        list.tail = nullptr;
-        list.count = 0;
-    }
+    LLQ() = default;
 
     // Insertion
     void enqueue(const T& item) override {

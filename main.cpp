@@ -19,7 +19,7 @@
 */
 
 int main() {
-
+    LLDQ<int> llq;
 
     return 0;
 }

@@ -57,7 +57,6 @@ public:
         this->curr_size_ = other.curr_size_;
         this->array_ = other.array_;
 
-        delete[] other.array_;
         other.array_ = nullptr;
         other.curr_size_ = 0;
         other.capacity_ = 0;
