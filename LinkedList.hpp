@@ -9,6 +9,8 @@ struct Node {
     T data;
     Node<T>* prev;
     Node<T>* next;
+
+	Node(const T& data) : data(data), prev(nullptr), next(nullptr) {};
 };
 
 template <typename T>
@@ -17,7 +19,7 @@ public:
 	// Behaviors
 	void printForward() const {
 		Node<T>* curr = head;
-		while (next != nullptr) {
+		while (curr->next != nullptr) {
 			std::cout << curr->data << " ";
 		}
 
@@ -25,7 +27,7 @@ public:
 	}
 	void printReverse() const {
 		Node<T>* curr = tail;
-		while (prev != nullptr) {
+		while (curr->prev != nullptr) {
 			std::cout << curr->data << " ";
 		}
 
@@ -94,7 +96,7 @@ public:
 
 		return true;
 	}
-	void Clear() {
+	void clear() {
 		Node<T>* curr = head;
 
 		while (curr != nullptr) {
@@ -125,14 +127,14 @@ public:
 	LinkedList<T>& operator=(const LinkedList<T>& rhs) {
 		if (this == &rhs) return *this;
 
-		Clear();
+		clear();
 
 		head = new Node<T>(rhs.head->data);
 		Node<T>* curr = head;
 		Node<T>* currOther = rhs.head->next;
 
 		while(currOther != nullptr) {
-			Node<T>* currNext = new Node<T>(currOtherNext->data);
+			Node<T>* currNext = new Node<T>(currOther->data);
 			curr->next = currNext;
 			currNext->prev = curr;
 			curr = currNext;
@@ -153,7 +155,7 @@ public:
 		Node<T>* currOther = list.head->next;
 
 		while(currOther != nullptr) {
-			Node<T>* currNext = new Node<T>(currOtherNext->data);
+			Node<T>* currNext = new Node<T>(currOther->data);
 			curr->next = currNext;
 			currNext->prev = curr;
 			curr = currNext;
@@ -173,7 +175,7 @@ public:
 		other.count = 0;
 	}
 	~LinkedList() {
-		Clear();
+		clear();
 	}
 
 private:
