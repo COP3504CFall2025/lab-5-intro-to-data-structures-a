@@ -7,8 +7,8 @@ using namespace std;
 template <typename T>
 struct Node {
     T data;
-    Node* prev;
-    Node* next;
+    Node<T>* prev;
+    Node<T>* next;
 };
 
 template <typename T>
@@ -16,7 +16,7 @@ class LinkedList {
 public:
 	// Behaviors
 	void printForward() const {
-		Node* curr = head;
+		Node<T>* curr = head;
 		while (next != nullptr) {
 			std::cout << curr->data << " ";
 		}
@@ -24,7 +24,7 @@ public:
 		std::cout << tail->data;
 	}
 	void printReverse() const {
-		Node* curr = tail;
+		Node<T>* curr = tail;
 		while (prev != nullptr) {
 			std::cout << curr->data << " ";
 		}
@@ -36,22 +36,22 @@ public:
 	[[nodiscard]] unsigned int getCount() const {
 		return count;
 	}
-	Node* getHead() {
+	Node<T>* getHead() {
 		return head;
 	}
-	const Node* getHead() const {
+	const Node<T>* getHead() const {
 		return head;
 	}
-	Node* getTail() {
+	Node<T>* getTail() {
 		return tail;
 	}
-	const Node* getTail() const {
+	const Node<T>* getTail() const {
 		return tail;
 	}
 
 	// Insertion
 	void addHead(const T& data) {
-		Node* newHead = new Node(data);
+		Node<T>* newHead = new Node<T>(data);
 		newHead->next = head;
 		newHead->prev = nullptr;
 
@@ -60,7 +60,7 @@ public:
 		count++;
 	}
 	void addTail(const T& data) {
-		Node* newTail = new Node(data);
+		Node<T>* newTail = new Node<T>(data);
 		newTail->next = nullptr;
 		newTail->prev = tail;
 
@@ -73,7 +73,7 @@ public:
 	bool removeHead() {
 		if (count == 0) return false;
 
-		Node* deleteMe = head;
+		Node<T>* deleteMe = head;
 		head = head->next;
 		head->prev = nullptr;
 
@@ -85,7 +85,7 @@ public:
 	bool removeTail() {
 		if (count == 0) return false;
 
-		Node* deleteMe = tail;
+		Node<T>* deleteMe = tail;
 		tail = tail->prev;
 		tail->next = nullptr;
 
@@ -95,10 +95,10 @@ public:
 		return true;
 	}
 	void Clear() {
-		Node* curr = head;
+		Node<T>* curr = head;
 
 		while (curr != nullptr) {
-			Node* next = curr->next;
+			Node<T>* next = curr->next;
 			delete curr;
 			curr = next;
 		}
@@ -127,12 +127,12 @@ public:
 
 		Clear();
 
-		head = new Node(rhs.head->data);
-		Node* curr = head;
-		Node* currOther = rhs.head->next;
+		head = new Node<T>(rhs.head->data);
+		Node<T>* curr = head;
+		Node<T>* currOther = rhs.head->next;
 
 		while(currOther != nullptr) {
-			Node* currNext = new Node(currOtherNext->data);
+			Node<T>* currNext = new Node<T>(currOtherNext->data);
 			curr->next = currNext;
 			currNext->prev = curr;
 			curr = currNext;
@@ -148,12 +148,12 @@ public:
 	// Construction/Destruction
 	LinkedList() : head(nullptr), tail(nullptr), count(0) {};
 	LinkedList(const LinkedList<T>& list) {
-		head = new Node(list.head->data);
-		Node* curr = head;
-		Node* currOther = list.head->next;
+		head = new Node<T>(list.head->data);
+		Node<T>* curr = head;
+		Node<T>* currOther = list.head->next;
 
 		while(currOther != nullptr) {
-			Node* currNext = new Node(currOtherNext->data);
+			Node<T>* currNext = new Node<T>(currOtherNext->data);
 			curr->next = currNext;
 			currNext->prev = curr;
 			curr = currNext;
@@ -178,8 +178,8 @@ public:
 
 private:
 	// Stores pointers to first and last nodes and count
-	Node* head;
-	Node* tail;
+	Node<T>* head;
+	Node<T>* tail;
 	unsigned int count;
 
 };

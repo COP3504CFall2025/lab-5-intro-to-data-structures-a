@@ -114,6 +114,9 @@ public:
 
     // Access
     T peek() const override {
+        if (curr_size_ == 0) {
+            throw std::runtime_error("Empty container");
+        }
         return array_[0];
     }
 

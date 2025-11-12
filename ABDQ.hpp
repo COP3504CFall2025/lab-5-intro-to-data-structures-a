@@ -144,7 +144,7 @@ public:
     // Deletion
     T popFront() override {
         if (curr_size_ == 0) {
-            throw std::out_of_range("Empty container");
+            throw std::runtime_error("Empty container");
         }
         T element = data_[0];
         for (size_t i = 1; i < curr_size_; i++) {
@@ -155,7 +155,7 @@ public:
     }
     T popBack() override {
         if (curr_size_ == 0) {
-            throw std::out_of_range("Empty container");
+            throw std::runtime_error("Empty container");
         }
         T element = data_[curr_size_ - 1];
         curr_size_--;
@@ -165,13 +165,13 @@ public:
     // Access
     const T& front() const override {
         if (curr_size_ == 0) {
-            throw std::out_of_range("Empty container");
+            throw std::runtime_error("Empty container");
         }
         return data_[0];
     }
     const T& back() const override {
         if (curr_size_ == 0) {
-            throw std::out_of_range("Empty container");
+            throw std::runtime_error("Empty container");
         }
         return data_[curr_size_ - 1];
     }
