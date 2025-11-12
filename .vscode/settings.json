@@ -19,7 +19,8 @@
         "streambuf": "cpp",
         "system_error": "cpp",
         "tuple": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "iostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

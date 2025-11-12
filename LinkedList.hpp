@@ -16,9 +16,7 @@ class LinkedList {
 public:
 	// Behaviors
 	void printForward() const {
-		if (count == 0) {
-            throw std::runtime_error("Empty container");
-        }
+		if (count == 0) return;
 		Node<T>* curr = head;
 		while (curr != nullptr) {
 			std::cout << curr->data << " ";
@@ -27,9 +25,7 @@ public:
 
 	}
 	void printReverse() const {
-		if (count == 0) {
-            throw std::runtime_error("Empty container");
-        }
+		if (count == 0) return;
 		Node<T>* curr = tail;
 		while (curr != nullptr) {
 			std::cout << curr->data << " ";

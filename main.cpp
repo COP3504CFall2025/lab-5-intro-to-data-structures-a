@@ -22,8 +22,10 @@ int main() {
     LinkedList<int> ll;
     ll.addHead(1);
     ll.addHead(2);
-    ll.addHead(3);
-    ll.addTail(3);
+    ll.removeHead();
+    ll.removeHead();
+    ll.addHead(1);
+    ll.printForward();
 
     return 0;
 }

@@ -113,7 +113,7 @@ public:
         if (curr_size_ == 0) {
             throw std::runtime_error("Empty container");
         }
-        return array_[curr_size_];
+        return array_[curr_size_-1];
     }
 
     T pop() override {
@@ -122,16 +122,19 @@ public:
         }
         T element = array_[curr_size_ - 1];
         curr_size_--;
+        capacity_--;
         return element;
     }
 
     void PrintForward() const {
+        if (curr_size_ == 0) return;
         for (size_t i = 0; i < curr_size_; i++) {
             std::cout << array_(i) << " ";
         }
     }
 
     void PrintReverse() const {
+        if (curr_size_ == 0) return;
         for (size_t i = curr_size_ - 1;  i >= 0; i--) {
             std::cout << array_(i) << " ";
         }

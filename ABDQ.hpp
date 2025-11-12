@@ -150,6 +150,7 @@ public:
             data_[i-1] = data_[i];
         }
         curr_size_--;
+        capacity_--;
         return element;
     }
     T popBack() override {
@@ -158,6 +159,7 @@ public:
         }
         T element = data_[curr_size_ - 1];
         curr_size_--;
+        capacity_--;
         return element;
     }
 
@@ -191,12 +193,14 @@ public:
     }
 
     void PrintForward() const {
+        if (curr_size_ == 0) return;
         for (T element : data_) {
             std::cout << element << " ";
         }
     }
 
     void PrintReverse() const {
+        if (curr_size_ == 0) return;
         for (size_t i = curr_size_; i >= 0; i--) {
             std::cout << data_[i] << " ";
         }

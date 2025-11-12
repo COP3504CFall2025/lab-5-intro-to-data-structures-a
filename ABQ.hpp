@@ -121,21 +121,27 @@ public:
 
     // Deletion
     T dequeue() override {
+        if (curr_size_ == 0) {
+            throw std::runtime_error("Empty container");
+        }
         T element = array_[0];
         for (size_t i = 1; i < curr_size_; i++) {
             array_[i-1] = array_[i];
         }
         curr_size_--;
+        capacity_--;
         return element;
     }
 
     void PrintForward() const {
+        if (curr_size_ == 0) return;
         for (T element : array_) {
             std::cout << element << " ";
         }
     }
 
     void PrintReverse() const {
+        if (curr_size_ == 0) return;
         for (size_t i = curr_size_; i >= 0; i--) {
             std::cout << array_[i] << " ";
         }
