@@ -150,6 +150,7 @@ public:
             data_[i-1] = data_[i];
         }
         curr_size_--;
+        shrinkIfNeeded();
         return element;
     }
     T popBack() override {
@@ -158,6 +159,7 @@ public:
         }
         T element = data_[curr_size_ - 1];
         curr_size_--;
+        shrinkIfNeeded();
         return element;
     }
 

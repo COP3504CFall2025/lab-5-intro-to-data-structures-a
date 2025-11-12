@@ -97,7 +97,7 @@ public:
             capacity_ *= 2;
 
             T* new_array_= new T[capacity_];
-            for(int i = 0; i < curr_size_; i++) {
+            for(size_t i = 0; i < curr_size_; i++) {
                 new_array_[i] = array_[i];
             }
 
@@ -122,7 +122,14 @@ public:
         }
         T element = array_[curr_size_ - 1];
         curr_size_--;
+        shrinkIfNeeded();
         return element;
+    }
+
+    void shrinkIfNeeded() {
+        if (curr_size_ <= capacity_ / 2) {
+            capacity_ /= 2;
+        }
     }
 
     void PrintForward() const {

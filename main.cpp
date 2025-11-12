@@ -20,10 +20,12 @@
 
 int main() {
     LLQ<int> llq;
+    LLQ<int> llq2;
     llq.enqueue(1);
-    std::cout << llq.peek();
-    std::cout << llq.getSize();
-
+    llq.enqueue(2);
+    llq2.enqueue(3);
+    llq2.enqueue(4);
+    llq = std::move(llq2);
 
     return 0;
 }

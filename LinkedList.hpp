@@ -56,6 +56,8 @@ public:
 		Node<T>* newHead = new Node<T>(data);
 
 		if (head == nullptr) {
+			newHead->next = nullptr;
+			newHead->prev = nullptr;
 			head = newHead;
 			tail = newHead;
 		}
@@ -72,6 +74,8 @@ public:
 		Node<T>* newTail = new Node<T>(data);
 
 		if (tail == nullptr) {
+			newTail->next = nullptr;
+			newTail->prev = nullptr;
 			head = newTail;
 			tail = newTail;
 		}
@@ -141,6 +145,8 @@ public:
 	// Operators
 	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept {
 		if (this == &other) return *this;
+
+		clear(); // finally found this after like 4 hours :(
 
 		head = other.head;
 		tail = other.tail;
