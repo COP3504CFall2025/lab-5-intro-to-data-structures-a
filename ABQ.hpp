@@ -134,7 +134,7 @@ public:
     }
 
     void shrinkIfNeeded() {
-        if (curr_size_ <= capacity_ / 2) {
+        if (curr_size_ < capacity_ / 2) {
             capacity_ /= 2;
         }
     }
